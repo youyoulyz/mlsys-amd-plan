@@ -1,0 +1,58 @@
+{
+  "if_cache_mib": 96,
+  "per_type": {
+    "f16_n1": {
+      "peak_inside_gbps": 1617.2,
+      "peak_at_mib": 80.0,
+      "outside_median_gbps": 846.1,
+      "ratio": 1.91
+    },
+    "f16_n16": {
+      "peak_inside_gbps": 978.7,
+      "peak_at_mib": 64.0,
+      "outside_median_gbps": 570.7,
+      "ratio": 1.72
+    },
+    "q8_0_n1": {
+      "peak_inside_gbps": 2093.1,
+      "peak_at_mib": 79.7,
+      "outside_median_gbps": 835.1,
+      "ratio": 2.51
+    },
+    "q8_0_n16": {
+      "peak_inside_gbps": 802.2,
+      "peak_at_mib": 47.8,
+      "outside_median_gbps": 573.0,
+      "ratio": 1.4
+    },
+    "q4_K_n1": {
+      "peak_inside_gbps": 1023.0,
+      "peak_at_mib": 64.1,
+      "outside_median_gbps": 746.5,
+      "ratio": 1.37
+    },
+    "q4_K_n16": {
+      "peak_inside_gbps": 329.3,
+      "peak_at_mib": 47.8,
+      "outside_median_gbps": 284.5,
+      "ratio": 1.16
+    },
+    "f32_n1": {
+      "peak_inside_gbps": 2140.5,
+      "peak_at_mib": 80.0,
+      "outside_median_gbps": 848.4,
+      "ratio": 2.52
+    },
+    "f32_n16": {
+      "peak_inside_gbps": 537.5,
+      "peak_at_mib": 64.0,
+      "outside_median_gbps": 249.5,
+      "ratio": 2.15
+    }
+  },
+  "read_sum": {
+    "inside_le96_median_gbps": 1470.9,
+    "inside_le96_max_gbps": 2082.9,
+    "outside_ge112_median_gbps": 834.0
+  }
+}

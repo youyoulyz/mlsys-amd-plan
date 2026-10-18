@@ -1,0 +1,204 @@
+====================================================================================================
+DeepSeek-V3 (MLA) vs DeepSeek-V4 (CSA+HCA) KV Cache Efficiency Benchmark
+====================================================================================================
+
+Available GPUs: 1
+  GPU 0: Radeon RX 7900 XTX (24560 MB)
+
+====================================================================================================
+Test Configuration:
+  Model dimension: 1024
+  Batch size: 1
+  Sequence lengths: [256, 512, 1024, 2048, 4096]
+====================================================================================================
+
+====================================================================================================
+Sequence Length: 256
+====================================================================================================
+
+[1] DeepSeek-V3 MLA (Multi-head Latent Attention)
+  KV Cache:       73,728 elements
+  KV Cache Size (FP16):       0.14 MB
+  Elements per token: 288
+  Theoretical FLOPs: 2.01e+08
+
+[2] DeepSeek-V4 CSA (Compressed Sparse Attention)
+  Compressed KV:       16,384 elements
+  Compressed KV Size (FP16):       0.03 MB
+  Compression Ratio: 4.0x
+  Elements per token (effective): 64.0
+  Theoretical FLOPs: 3.36e+07
+
+[3] DeepSeek-V4 HCA (Heavily Compressed Attention)
+  Compressed KV:        1,024 elements
+  Compressed KV Size (FP16):       0.00 MB
+  Compression Ratio: 64.0x
+  Elements per token (effective): 4.0
+  Theoretical FLOPs: 9.83e+04
+
+====================================================================================================
+Sequence Length: 512
+====================================================================================================
+
+[1] DeepSeek-V3 MLA (Multi-head Latent Attention)
+  KV Cache:      147,456 elements
+  KV Cache Size (FP16):       0.28 MB
+  Elements per token: 288
+  Theoretical FLOPs: 8.05e+08
+
+[2] DeepSeek-V4 CSA (Compressed Sparse Attention)
+  Compressed KV:       32,768 elements
+  Compressed KV Size (FP16):       0.06 MB
+  Compression Ratio: 4.0x
+  Elements per token (effective): 64.0
+  Theoretical FLOPs: 1.34e+08
+
+[3] DeepSeek-V4 HCA (Heavily Compressed Attention)
+  Compressed KV:        2,048 elements
+  Compressed KV Size (FP16):       0.00 MB
+  Compression Ratio: 64.0x
+  Elements per token (effective): 4.0
+  Theoretical FLOPs: 2.62e+05
+
+====================================================================================================
+Sequence Length: 1024
+====================================================================================================
+
+[1] DeepSeek-V3 MLA (Multi-head Latent Attention)
+  KV Cache:      294,912 elements
+  KV Cache Size (FP16):       0.56 MB
+  Elements per token: 288
+  Theoretical FLOPs: 3.22e+09
+
+[2] DeepSeek-V4 CSA (Compressed Sparse Attention)
+  Compressed KV:       65,536 elements
+  Compressed KV Size (FP16):       0.12 MB
+  Compression Ratio: 4.0x
+  Elements per token (effective): 64.0
+  Theoretical FLOPs: 5.37e+08
+
+[3] DeepSeek-V4 HCA (Heavily Compressed Attention)
+  Compressed KV:        4,096 elements
+  Compressed KV Size (FP16):       0.01 MB
+  Compression Ratio: 64.0x
+  Elements per token (effective): 4.0
+  Theoretical FLOPs: 7.86e+05
+
+====================================================================================================
+Sequence Length: 2048
+====================================================================================================
+
+[1] DeepSeek-V3 MLA (Multi-head Latent Attention)
+  KV Cache:      589,824 elements
+  KV Cache Size (FP16):       1.12 MB
+  Elements per token: 288
+  Theoretical FLOPs: 1.29e+10
+
+[2] DeepSeek-V4 CSA (Compressed Sparse Attention)
+  Compressed KV:      131,072 elements
+  Compressed KV Size (FP16):       0.25 MB
+  Compression Ratio: 4.0x
+  Elements per token (effective): 64.0
+  Theoretical FLOPs: 1.07e+09
+
+[3] DeepSeek-V4 HCA (Heavily Compressed Attention)
+  Compressed KV:        8,192 elements
+  Compressed KV Size (FP16):       0.02 MB
+  Compression Ratio: 64.0x
+  Elements per token (effective): 4.0
+  Theoretical FLOPs: 2.62e+06
+
+====================================================================================================
+Sequence Length: 4096
+====================================================================================================
+
+[1] DeepSeek-V3 MLA (Multi-head Latent Attention)
+  KV Cache:    1,179,648 elements
+  KV Cache Size (FP16):       2.25 MB
+  Elements per token: 288
+  Theoretical FLOPs: 5.15e+10
+
+[2] DeepSeek-V4 CSA (Compressed Sparse Attention)
+  Compressed KV:      262,144 elements
+  Compressed KV Size (FP16):       0.50 MB
+  Compression Ratio: 4.0x
+  Elements per token (effective): 64.0
+  Theoretical FLOPs: 2.15e+09
+
+[3] DeepSeek-V4 HCA (Heavily Compressed Attention)
+  Compressed KV:       16,384 elements
+  Compressed KV Size (FP16):       0.03 MB
+  Compression Ratio: 64.0x
+  Elements per token (effective): 4.0
+  Theoretical FLOPs: 9.44e+06
+
+========================================================================================================================
+SUMMARY 1: KV Cache Size Comparison (MB, FP16)
+========================================================================================================================
+Seq Len    V3 MLA          V4 CSA          V4 HCA          CSA Reduction        HCA Reduction       
+------------------------------------------------------------------------------------------------------------------------
+256        0.14            0.03            0.00            77.8                % 98.6                %
+512        0.28            0.06            0.00            77.8                % 98.6                %
+1024       0.56            0.12            0.01            77.8                % 98.6                %
+2048       1.12            0.25            0.02            77.8                % 98.6                %
+4096       2.25            0.50            0.03            77.8                % 98.6                %
+
+========================================================================================================================
+SUMMARY 2: Theoretical Attention FLOPs Comparison
+========================================================================================================================
+Seq Len    V3 MLA               V4 CSA               V4 HCA               CSA Speedup     HCA Speedup    
+------------------------------------------------------------------------------------------------------------------------
+256        2.01e+08             3.36e+07             9.83e+04             5.99           x 2048.00        x
+512        8.05e+08             1.34e+08             2.62e+05             5.99           x 3072.00        x
+1024       3.22e+09             5.37e+08             7.86e+05             6.00           x 4096.00        x
+2048       1.29e+10             1.07e+09             2.62e+06             11.99          x 4915.20        x
+4096       5.15e+10             2.15e+09             9.44e+06             23.99          x 5461.33        x
+
+========================================================================================================================
+SUMMARY 3: KV Cache Elements per Token
+========================================================================================================================
+Seq Len    V3 MLA          V4 CSA          V4 HCA          CSA Ratio       HCA Ratio      
+------------------------------------------------------------------------------------------------------------------------
+256        288.0           64.0            4.0             0.222           0.014          
+512        288.0           64.0            4.0             0.222           0.014          
+1024       288.0           64.0            4.0             0.222           0.014          
+2048       288.0           64.0            4.0             0.222           0.014          
+4096       288.0           64.0            4.0             0.222           0.014          
+
+========================================================================================================================
+EXTRAPOLATION TO 1M CONTEXT (Based on Paper Findings)
+========================================================================================================================
+
+Estimated KV Cache at 1M tokens:
+  V3 MLA:        549.32 MB (0.54 GB)
+  V4 CSA:         30.52 MB (0.03 GB)
+  V4 HCA:          0.12 MB (0.00 GB)
+
+  CSA reduction: 94.4%
+  HCA reduction: 100.0%
+
+========================================================================================================================
+KEY FINDINGS (Aligned with DeepSeek-V4 Paper)
+========================================================================================================================
+
+1. KV Cache Efficiency:
+   - V4 CSA compresses sequence dimension by m=4x, reducing KV cache significantly
+   - V4 HCA compresses by m'=128x (or 64x in this benchmark), achieving extreme reduction
+   - At 1M context, V4 can achieve ~90% KV cache reduction vs V3
+
+2. Computational Efficiency:
+   - V4 CSA reduces attention FLOPs through sparse selection (top-k)
+   - V4 HCA reduces FLOPs through heavy compression
+   - At 1M context, V4-Pro achieves 27% of V3.2 FLOPs, V4-Flash achieves 10%
+
+3. Architecture Innovation:
+   - V3 MLA: Low-rank compression in feature space (d_c << d_head * n_heads)
+   - V4 CSA+HCA: Sequence dimension compression (m=4, m'=128)
+   - Hybrid approach: CSA for sparse access, HCA for extreme compression
+
+4. Practical Impact:
+   - Enables efficient 1M token context windows
+   - Reduces memory bandwidth pressure during inference
+   - Makes long-context reasoning and agentic workflows feasible
+    
+========================================================================================================================

@@ -1,0 +1,1 @@
+event	step	layer	batch	raw	pre_resident	post_slot	fetched	cpu_routed	missing	resident_count	resident_hex	route_counts	active_unique	resident_unique	missing_unique	dt_ms	raw_weights	pre_resident_weights	policy_dropped	resident_weight_mass

@@ -1,0 +1,89 @@
+# MoE RPB/nwarps Sweep — Mon Jul  6 06:55:50 PM CST 2026
+# Model: LFM2.5-8B-A1B-Q4_K_M
+# GPU:   Marketing Name:          AMD Ryzen 9 3900X 12-Core Processor
+# Args: -p 0 -n 64 -ngl 99 -t 1 -r 5
+
+## RPB Sweep (nwarps=default=8)
+--- RPB=1 ---
+| model                          |       size |     params | backend    | ngl | threads |            test |                  t/s |
+| ------------------------------ | ---------: | ---------: | ---------- | --: | ------: | --------------: | -------------------: |
+| lfm2moe 8B.A1B Q4_K - Medium   |   4.79 GiB |     8.47 B | ROCm       |  99 |       1 |            tg64 |        214.60 ± 0.45 |
+--- RPB=2 ---
+| model                          |       size |     params | backend    | ngl | threads |            test |                  t/s |
+| ------------------------------ | ---------: | ---------: | ---------- | --: | ------: | --------------: | -------------------: |
+| lfm2moe 8B.A1B Q4_K - Medium   |   4.79 GiB |     8.47 B | ROCm       |  99 |       1 |            tg64 |        276.90 ± 5.73 |
+--- RPB=4 ---
+| model                          |       size |     params | backend    | ngl | threads |            test |                  t/s |
+| ------------------------------ | ---------: | ---------: | ---------- | --: | ------: | --------------: | -------------------: |
+| lfm2moe 8B.A1B Q4_K - Medium   |   4.79 GiB |     8.47 B | ROCm       |  99 |       1 |            tg64 |        293.82 ± 1.82 |
+--- RPB=8 ---
+| model                          |       size |     params | backend    | ngl | threads |            test |                  t/s |
+| ------------------------------ | ---------: | ---------: | ---------- | --: | ------: | --------------: | -------------------: |
+| lfm2moe 8B.A1B Q4_K - Medium   |   4.79 GiB |     8.47 B | ROCm       |  99 |       1 |            tg64 |        285.53 ± 0.49 |
+
+## NWARPS Sweep (rpb=default=1)
+--- NWARPS=8 ---
+| model                          |       size |     params | backend    | ngl | threads |            test |                  t/s |
+| ------------------------------ | ---------: | ---------: | ---------- | --: | ------: | --------------: | -------------------: |
+| lfm2moe 8B.A1B Q4_K - Medium   |   4.79 GiB |     8.47 B | ROCm       |  99 |       1 |            tg64 |        214.52 ± 0.33 |
+--- NWARPS=4 ---
+| model                          |       size |     params | backend    | ngl | threads |            test |                  t/s |
+| ------------------------------ | ---------: | ---------: | ---------- | --: | ------: | --------------: | -------------------: |
+| lfm2moe 8B.A1B Q4_K - Medium   |   4.79 GiB |     8.47 B | ROCm       |  99 |       1 |            tg64 |        254.58 ± 0.75 |
+--- NWARPS=2 ---
+| model                          |       size |     params | backend    | ngl | threads |            test |                  t/s |
+| ------------------------------ | ---------: | ---------: | ---------- | --: | ------: | --------------: | -------------------: |
+| lfm2moe 8B.A1B Q4_K - Medium   |   4.79 GiB |     8.47 B | ROCm       |  99 |       1 |            tg64 |        308.85 ± 2.08 |
+--- NWARPS=1 ---
+| model                          |       size |     params | backend    | ngl | threads |            test |                  t/s |
+| ------------------------------ | ---------: | ---------: | ---------- | --: | ------: | --------------: | -------------------: |
+| lfm2moe 8B.A1B Q4_K - Medium   |   4.79 GiB |     8.47 B | ROCm       |  99 |       1 |            tg64 |        290.17 ± 1.07 |
+
+## Combined Sweep
+RPB=1_NW=4 | model                          |       size |     params | backend    | ngl | threads |            test |                  t/s |
+RPB=1_NW=4 | ------------------------------ | ---------: | ---------: | ---------- | --: | ------: | --------------: | -------------------: |
+RPB=1_NW=4 | lfm2moe 8B.A1B Q4_K - Medium   |   4.79 GiB |     8.47 B | ROCm       |  99 |       1 |            tg64 |        254.46 ± 0.16 |
+RPB=1_NW=2 | model                          |       size |     params | backend    | ngl | threads |            test |                  t/s |
+RPB=1_NW=2 | ------------------------------ | ---------: | ---------: | ---------- | --: | ------: | --------------: | -------------------: |
+RPB=1_NW=2 | lfm2moe 8B.A1B Q4_K - Medium   |   4.79 GiB |     8.47 B | ROCm       |  99 |       1 |            tg64 |        306.95 ± 2.77 |
+RPB=1_NW=1 | model                          |       size |     params | backend    | ngl | threads |            test |                  t/s |
+RPB=1_NW=1 | ------------------------------ | ---------: | ---------: | ---------- | --: | ------: | --------------: | -------------------: |
+RPB=1_NW=1 | lfm2moe 8B.A1B Q4_K - Medium   |   4.79 GiB |     8.47 B | ROCm       |  99 |       1 |            tg64 |        290.73 ± 2.16 |
+RPB=2_NW=8 | model                          |       size |     params | backend    | ngl | threads |            test |                  t/s |
+RPB=2_NW=8 | ------------------------------ | ---------: | ---------: | ---------- | --: | ------: | --------------: | -------------------: |
+RPB=2_NW=8 | lfm2moe 8B.A1B Q4_K - Medium   |   4.79 GiB |     8.47 B | ROCm       |  99 |       1 |            tg64 |        280.42 ± 1.54 |
+RPB=2_NW=4 | model                          |       size |     params | backend    | ngl | threads |            test |                  t/s |
+RPB=2_NW=4 | ------------------------------ | ---------: | ---------: | ---------- | --: | ------: | --------------: | -------------------: |
+RPB=2_NW=4 | lfm2moe 8B.A1B Q4_K - Medium   |   4.79 GiB |     8.47 B | ROCm       |  99 |       1 |            tg64 |        305.77 ± 2.99 |
+RPB=2_NW=2 | model                          |       size |     params | backend    | ngl | threads |            test |                  t/s |
+RPB=2_NW=2 | ------------------------------ | ---------: | ---------: | ---------- | --: | ------: | --------------: | -------------------: |
+RPB=2_NW=2 | lfm2moe 8B.A1B Q4_K - Medium   |   4.79 GiB |     8.47 B | ROCm       |  99 |       1 |            tg64 |        299.33 ± 2.96 |
+RPB=2_NW=1 | model                          |       size |     params | backend    | ngl | threads |            test |                  t/s |
+RPB=2_NW=1 | ------------------------------ | ---------: | ---------: | ---------- | --: | ------: | --------------: | -------------------: |
+RPB=2_NW=1 | lfm2moe 8B.A1B Q4_K - Medium   |   4.79 GiB |     8.47 B | ROCm       |  99 |       1 |            tg64 |        280.55 ± 1.41 |
+RPB=4_NW=8 | model                          |       size |     params | backend    | ngl | threads |            test |                  t/s |
+RPB=4_NW=8 | ------------------------------ | ---------: | ---------: | ---------- | --: | ------: | --------------: | -------------------: |
+RPB=4_NW=8 | lfm2moe 8B.A1B Q4_K - Medium   |   4.79 GiB |     8.47 B | ROCm       |  99 |       1 |            tg64 |        294.78 ± 0.73 |
+RPB=4_NW=4 | model                          |       size |     params | backend    | ngl | threads |            test |                  t/s |
+RPB=4_NW=4 | ------------------------------ | ---------: | ---------: | ---------- | --: | ------: | --------------: | -------------------: |
+RPB=4_NW=4 | lfm2moe 8B.A1B Q4_K - Medium   |   4.79 GiB |     8.47 B | ROCm       |  99 |       1 |            tg64 |        304.50 ± 2.33 |
+RPB=4_NW=2 | model                          |       size |     params | backend    | ngl | threads |            test |                  t/s |
+RPB=4_NW=2 | ------------------------------ | ---------: | ---------: | ---------- | --: | ------: | --------------: | -------------------: |
+RPB=4_NW=2 | lfm2moe 8B.A1B Q4_K - Medium   |   4.79 GiB |     8.47 B | ROCm       |  99 |       1 |            tg64 |        291.15 ± 0.79 |
+RPB=4_NW=1 | model                          |       size |     params | backend    | ngl | threads |            test |                  t/s |
+RPB=4_NW=1 | ------------------------------ | ---------: | ---------: | ---------- | --: | ------: | --------------: | -------------------: |
+RPB=4_NW=1 | lfm2moe 8B.A1B Q4_K - Medium   |   4.79 GiB |     8.47 B | ROCm       |  99 |       1 |            tg64 |        343.91 ± 1.29 |
+RPB=8_NW=8 | model                          |       size |     params | backend    | ngl | threads |            test |                  t/s |
+RPB=8_NW=8 | ------------------------------ | ---------: | ---------: | ---------- | --: | ------: | --------------: | -------------------: |
+RPB=8_NW=8 | lfm2moe 8B.A1B Q4_K - Medium   |   4.79 GiB |     8.47 B | ROCm       |  99 |       1 |            tg64 |        284.63 ± 1.46 |
+RPB=8_NW=4 | model                          |       size |     params | backend    | ngl | threads |            test |                  t/s |
+RPB=8_NW=4 | ------------------------------ | ---------: | ---------: | ---------- | --: | ------: | --------------: | -------------------: |
+RPB=8_NW=4 | lfm2moe 8B.A1B Q4_K - Medium   |   4.79 GiB |     8.47 B | ROCm       |  99 |       1 |            tg64 |        299.77 ± 0.91 |
+RPB=8_NW=2 | model                          |       size |     params | backend    | ngl | threads |            test |                  t/s |
+RPB=8_NW=2 | ------------------------------ | ---------: | ---------: | ---------- | --: | ------: | --------------: | -------------------: |
+RPB=8_NW=2 | lfm2moe 8B.A1B Q4_K - Medium   |   4.79 GiB |     8.47 B | ROCm       |  99 |       1 |            tg64 |        352.33 ± 1.88 |
+RPB=8_NW=1 | model                          |       size |     params | backend    | ngl | threads |            test |                  t/s |
+RPB=8_NW=1 | ------------------------------ | ---------: | ---------: | ---------- | --: | ------: | --------------: | -------------------: |
+RPB=8_NW=1 | lfm2moe 8B.A1B Q4_K - Medium   |   4.79 GiB |     8.47 B | ROCm       |  99 |       1 |            tg64 |        363.32 ± 0.86 |
+
+# Done at Mon Jul  6 06:57:37 PM CST 2026

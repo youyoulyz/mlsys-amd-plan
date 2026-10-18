@@ -1,0 +1,122 @@
+[
+  {
+    "backend": "local_disk",
+    "num_ops": 8192,
+    "concurrency": 16,
+    "elapsed_sec": 14.626968399010366,
+    "ops_per_sec": 560.0613727007338,
+    "use_odirect": true,
+    "local_disk_dir": "/home/luyzh/tmp_lab11/bench_c16_od",
+    "run": "c16_od"
+  },
+  {
+    "backend": "rust_raw_block",
+    "num_ops": 8192,
+    "concurrency": 16,
+    "elapsed_sec": 0.008406245993683115,
+    "ops_per_sec": 974513.47559373,
+    "use_odirect": true,
+    "raw_device": "/home/luyzh/tmp_lab11/bench_c16_od/raw_block.bin",
+    "run": "c16_od"
+  },
+  {
+    "backend": "local_disk",
+    "num_ops": 8192,
+    "concurrency": 16,
+    "elapsed_sec": 9.492901605000952,
+    "ops_per_sec": 862.960593174628,
+    "use_odirect": false,
+    "local_disk_dir": "/home/luyzh/tmp_lab11/bench_c16_pc",
+    "run": "c16_pc"
+  },
+  {
+    "backend": "rust_raw_block",
+    "num_ops": 8192,
+    "concurrency": 16,
+    "elapsed_sec": 0.009267845016438514,
+    "ops_per_sec": 883916.3781299458,
+    "use_odirect": false,
+    "raw_device": "/home/luyzh/tmp_lab11/bench_c16_pc/raw_block.bin",
+    "run": "c16_pc"
+  },
+  {
+    "backend": "local_disk",
+    "num_ops": 8192,
+    "concurrency": 32,
+    "elapsed_sec": 16.27078480500495,
+    "ops_per_sec": 503.4790944736797,
+    "use_odirect": true,
+    "local_disk_dir": "/home/luyzh/tmp_lab11/bench_c32_od",
+    "run": "c32_od"
+  },
+  {
+    "backend": "rust_raw_block",
+    "num_ops": 8192,
+    "concurrency": 32,
+    "elapsed_sec": 0.007228308008052409,
+    "ops_per_sec": 1133321.9324458821,
+    "use_odirect": true,
+    "raw_device": "/home/luyzh/tmp_lab11/bench_c32_od/raw_block.bin",
+    "run": "c32_od"
+  },
+  {
+    "backend": "local_disk",
+    "num_ops": 8192,
+    "concurrency": 32,
+    "elapsed_sec": 9.98767488199519,
+    "ops_per_sec": 820.2109196373364,
+    "use_odirect": false,
+    "local_disk_dir": "/home/luyzh/tmp_lab11/bench_c32_pc",
+    "run": "c32_pc"
+  },
+  {
+    "backend": "rust_raw_block",
+    "num_ops": 8192,
+    "concurrency": 32,
+    "elapsed_sec": 0.01338710100390017,
+    "ops_per_sec": 611932.3367780193,
+    "use_odirect": false,
+    "raw_device": "/home/luyzh/tmp_lab11/bench_c32_pc/raw_block.bin",
+    "run": "c32_pc"
+  },
+  {
+    "backend": "local_disk",
+    "num_ops": 8192,
+    "concurrency": 4,
+    "elapsed_sec": 8.13079320100951,
+    "ops_per_sec": 1007.5277771156312,
+    "use_odirect": true,
+    "local_disk_dir": "/home/luyzh/tmp_lab11/bench_c4_od",
+    "run": "c4_od"
+  },
+  {
+    "backend": "rust_raw_block",
+    "num_ops": 8192,
+    "concurrency": 4,
+    "elapsed_sec": 0.007512648997362703,
+    "ops_per_sec": 1090427.6245137742,
+    "use_odirect": true,
+    "raw_device": "/home/luyzh/tmp_lab11/bench_c4_od/raw_block.bin",
+    "run": "c4_od"
+  },
+  {
+    "backend": "local_disk",
+    "num_ops": 8192,
+    "concurrency": 4,
+    "elapsed_sec": 8.021628667018376,
+    "ops_per_sec": 1021.2389952282533,
+    "use_odirect": false,
+    "local_disk_dir": "/home/luyzh/tmp_lab11/bench_c4_pc",
+    "run": "c4_pc"
+  },
+  {
+    "backend": "rust_raw_block",
+    "num_ops": 8192,
+    "concurrency": 4,
+    "elapsed_sec": 0.005982898001093417,
+    "ops_per_sec": 1369236.1124162327,
+    "use_odirect": false,
+    "raw_device": "/home/luyzh/tmp_lab11/bench_c4_pc/raw_block.bin",
+    "run": "c4_pc"
+  }
+]

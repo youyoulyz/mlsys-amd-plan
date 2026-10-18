@@ -1,0 +1,7 @@
+precision,peak_ops_per_s,peak_tflops_or_tops,theoretical_hbm_gbps,ridge_point_ops_per_byte,basis
+FP32,61400000000000.0,61.4,960.0,63.958333333333336,FP32 vector
+FP16,123000000000000.0,123.0,960.0,128.125,FP16 matrix
+BF16,123000000000000.0,123.0,960.0,128.125,BF16 assumed FP16-equivalent; not separately listed
+Q8_0,123000000000000.0,123.0,960.0,128.125,official INT8 matrix rate
+Q4_K,246000000000000.0,246.0,960.0,256.25,official INT4 matrix rate
+FP8,,,960.0,,gfx1100/RDNA3 has no native FP8 WMMA; no supported peak used

@@ -1,0 +1,8 @@
+case,precision,runtime_dtype,method,checkpoint_data_mib,per_token_weight_mib,bits_per_logical_parameter,type_bytes,output_head_name
+base_bf16,BF16,bfloat16,Qwen2.5-7B native BF16 checkpoint,14525.6357421875,13486.1357421875,16.00075428237737,{'BF16': 15231233024},lm_head.weight
+base_fp16,FP16,float16,Qwen2.5-7B BF16 checkpoint cast to FP16,14525.6357421875,13486.1357421875,16.00075428237737,{'BF16': 15231233024},lm_head.weight
+base_fp32,FP32,float32,Qwen2.5-7B BF16 checkpoint upcast to FP32,14525.6357421875,26972.271484375,32.00150856475474,{'BF16': 15231233024},lm_head.weight
+awq_int4,AWQ-INT4,float16,"AWQ W4A16, Triton path",5312.6787109375,4273.1787109375,5.06995360757851,"{'F16': 2282613760, 'I32': 3288133632}",lm_head.weight
+gptq_int4,GPTQ-INT4,float16,"GPTQ W4A16, RDNA3W4A16LinearKernel",5316.9990234375,4277.4990234375,5.075079483519335,"{'F16': 2282613760, 'I32': 3292663808}",lm_head.weight
+gptq_int8,GPTQ-INT8,float16,"GPTQ Int8, ConchLinearKernel",8452.8076171875,7413.3076171875,8.795589475733195,"{'F16': 2282613760, 'I32': 6580797440}",lm_head.weight
+fp8_dynamic,FP8,mixed,dynamic FP8 compressed-tensors; unsupported on gfx1100,8305.2880859375,7265.7880859375,8.620563521930963,"{'BF16': 2183437312, 'F8_E4M3': 6525288448}",lm_head.weight

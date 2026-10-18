@@ -1,0 +1,58 @@
+# lab 11 本机矩阵运行日志（2026-10-17，RX 7900 XTX 主机）
+# 本地盘：/dev/sda1 = Micron M600 1TB SATA SSD（ext4，挂载 /）；/tmp 是 tmpfs、/mnt/luyuzhou 是 NAS，均不适合做盘层基准，故数据目录放 /home/luyzh
+# 环境：/home/luyzh/.venvs/lab11（--system-site-packages，继承 base torch 2.14.0+rocm7.2）+ PYTHONPATH=/mnt/luyuzhou/hpc/LMCache
+#   + CUDA_VISIBLE_DEVICES= （ROCm 上 torch.cuda.is_available() 恒 True，置空后 LMCache 走 non_cuda_equivalents 纯 Python 回退，纯 CPU 微基准不受影响）
+#   + rust 扩展 lmcache_rust_raw_block_io 由 LMCache/rust/raw_block cargo build --release 编译后装进 venv
+# 参数：num_ops=8192（每 run 512 MiB 名义写入，64 KiB/op），concurrency ∈ {4,16,32}，buffered vs O_DIRECT，每 run 独立目录，串行执行
+# 介质基线：dd if=/dev/zero bs=64k count=8192 oflag=direct conv=fsync → 116 MB/s（512 MiB 4.61 s）
+# 注意：rust_raw_block 的 ops/s 是提交/受理吞吐（buffered=进页缓存；O_DIRECT=设备受理，NAND 刷盘异步），且 1GB 设备 − 128MiB 元数据 ÷ 4MiB ≈ 223 个数据 slot，8192 op 反复覆盖同一批 slot，唯一落盘数据 ≈15 MB（du 实测），不代表顺序介质带宽
+
+=== RUN c4_pc (num_ops=8192, concurrency=4, odirect=pc) 16:31:37 ===
+[32;20m[2026-10-17 16:31:49,884] LMCache INFO:[0m Calculating the size of a single LMCache chunk [3m(local_cpu_backend.py:717:lmcache.v1.storage_backend.local_cpu_backend)[0m
+[32;20m[2026-10-17 16:31:49,884] LMCache INFO:[0m RustRawBlockBackend init: device=/home/luyzh/tmp_lab11/bench_c4_pc/raw_block.bin cap=1073741824 slot=4198400 align=4096 header=4096 meta_total=134217728 data_base=134217728 zero_copy=True [3m(rust_raw_block_backend.py:243:lmcache.v1.storage_backend.plugins.rust_raw_block_backend)[0m
+[32;20m[2026-10-17 16:31:49,884] LMCache INFO:[0m RustRawBlockBackend: no valid on-device metadata checkpoint found [3m(rust_raw_block_backend.py:1188:lmcache.v1.storage_backend.plugins.rust_raw_block_backend)[0m
+local_disk: ops=8192 concurrency=4 elapsed=8.022s ops/sec=1021.24
+rust_raw_block: ops=8192 concurrency=4 elapsed=0.006s ops/sec=1369236.11
+Wrote results to /home/luyzh/tmp_lab11/bench_c4_pc.json
+=== END c4_pc exit=0 16:31:50 ===
+=== RUN c4_od (num_ops=8192, concurrency=4, odirect=od) 16:31:50 ===
+[32;20m[2026-10-17 16:32:02,561] LMCache INFO:[0m Calculating the size of a single LMCache chunk [3m(local_cpu_backend.py:717:lmcache.v1.storage_backend.local_cpu_backend)[0m
+[32;20m[2026-10-17 16:32:02,562] LMCache INFO:[0m RustRawBlockBackend init: device=/home/luyzh/tmp_lab11/bench_c4_od/raw_block.bin cap=1073741824 slot=4198400 align=4096 header=4096 meta_total=134217728 data_base=134217728 zero_copy=True [3m(rust_raw_block_backend.py:243:lmcache.v1.storage_backend.plugins.rust_raw_block_backend)[0m
+[32;20m[2026-10-17 16:32:02,562] LMCache INFO:[0m RustRawBlockBackend: no valid on-device metadata checkpoint found [3m(rust_raw_block_backend.py:1188:lmcache.v1.storage_backend.plugins.rust_raw_block_backend)[0m
+local_disk: ops=8192 concurrency=4 elapsed=8.131s ops/sec=1007.53
+rust_raw_block: ops=8192 concurrency=4 elapsed=0.008s ops/sec=1090427.62
+Wrote results to /home/luyzh/tmp_lab11/bench_c4_od.json
+=== END c4_od exit=0 16:32:03 ===
+=== RUN c16_pc (num_ops=8192, concurrency=16, odirect=pc) 16:32:03 ===
+[32;20m[2026-10-17 16:32:16,575] LMCache INFO:[0m Calculating the size of a single LMCache chunk [3m(local_cpu_backend.py:717:lmcache.v1.storage_backend.local_cpu_backend)[0m
+[32;20m[2026-10-17 16:32:16,575] LMCache INFO:[0m RustRawBlockBackend init: device=/home/luyzh/tmp_lab11/bench_c16_pc/raw_block.bin cap=1073741824 slot=4198400 align=4096 header=4096 meta_total=134217728 data_base=134217728 zero_copy=True [3m(rust_raw_block_backend.py:243:lmcache.v1.storage_backend.plugins.rust_raw_block_backend)[0m
+[32;20m[2026-10-17 16:32:16,575] LMCache INFO:[0m RustRawBlockBackend: no valid on-device metadata checkpoint found [3m(rust_raw_block_backend.py:1188:lmcache.v1.storage_backend.plugins.rust_raw_block_backend)[0m
+local_disk: ops=8192 concurrency=16 elapsed=9.493s ops/sec=862.96
+rust_raw_block: ops=8192 concurrency=16 elapsed=0.009s ops/sec=883916.38
+Wrote results to /home/luyzh/tmp_lab11/bench_c16_pc.json
+=== END c16_pc exit=0 16:32:17 ===
+=== RUN c16_od (num_ops=8192, concurrency=16, odirect=od) 16:32:17 ===
+[32;20m[2026-10-17 16:32:35,717] LMCache INFO:[0m Calculating the size of a single LMCache chunk [3m(local_cpu_backend.py:717:lmcache.v1.storage_backend.local_cpu_backend)[0m
+[32;20m[2026-10-17 16:32:35,717] LMCache INFO:[0m RustRawBlockBackend init: device=/home/luyzh/tmp_lab11/bench_c16_od/raw_block.bin cap=1073741824 slot=4198400 align=4096 header=4096 meta_total=134217728 data_base=134217728 zero_copy=True [3m(rust_raw_block_backend.py:243:lmcache.v1.storage_backend.plugins.rust_raw_block_backend)[0m
+[32;20m[2026-10-17 16:32:35,717] LMCache INFO:[0m RustRawBlockBackend: no valid on-device metadata checkpoint found [3m(rust_raw_block_backend.py:1188:lmcache.v1.storage_backend.plugins.rust_raw_block_backend)[0m
+local_disk: ops=8192 concurrency=16 elapsed=14.627s ops/sec=560.06
+rust_raw_block: ops=8192 concurrency=16 elapsed=0.008s ops/sec=974513.48
+Wrote results to /home/luyzh/tmp_lab11/bench_c16_od.json
+=== END c16_od exit=0 16:32:36 ===
+=== RUN c32_pc (num_ops=8192, concurrency=32, odirect=pc) 16:32:36 ===
+[32;20m[2026-10-17 16:32:50,350] LMCache INFO:[0m Calculating the size of a single LMCache chunk [3m(local_cpu_backend.py:717:lmcache.v1.storage_backend.local_cpu_backend)[0m
+[32;20m[2026-10-17 16:32:50,351] LMCache INFO:[0m RustRawBlockBackend init: device=/home/luyzh/tmp_lab11/bench_c32_pc/raw_block.bin cap=1073741824 slot=4198400 align=4096 header=4096 meta_total=134217728 data_base=134217728 zero_copy=True [3m(rust_raw_block_backend.py:243:lmcache.v1.storage_backend.plugins.rust_raw_block_backend)[0m
+[32;20m[2026-10-17 16:32:50,351] LMCache INFO:[0m RustRawBlockBackend: no valid on-device metadata checkpoint found [3m(rust_raw_block_backend.py:1188:lmcache.v1.storage_backend.plugins.rust_raw_block_backend)[0m
+local_disk: ops=8192 concurrency=32 elapsed=9.988s ops/sec=820.21
+rust_raw_block: ops=8192 concurrency=32 elapsed=0.013s ops/sec=611932.34
+Wrote results to /home/luyzh/tmp_lab11/bench_c32_pc.json
+=== END c32_pc exit=0 16:32:51 ===
+=== RUN c32_od (num_ops=8192, concurrency=32, odirect=od) 16:32:51 ===
+[32;20m[2026-10-17 16:33:11,224] LMCache INFO:[0m Calculating the size of a single LMCache chunk [3m(local_cpu_backend.py:717:lmcache.v1.storage_backend.local_cpu_backend)[0m
+[32;20m[2026-10-17 16:33:11,224] LMCache INFO:[0m RustRawBlockBackend init: device=/home/luyzh/tmp_lab11/bench_c32_od/raw_block.bin cap=1073741824 slot=4198400 align=4096 header=4096 meta_total=134217728 data_base=134217728 zero_copy=True [3m(rust_raw_block_backend.py:243:lmcache.v1.storage_backend.plugins.rust_raw_block_backend)[0m
+[32;20m[2026-10-17 16:33:11,224] LMCache INFO:[0m RustRawBlockBackend: no valid on-device metadata checkpoint found [3m(rust_raw_block_backend.py:1188:lmcache.v1.storage_backend.plugins.rust_raw_block_backend)[0m
+local_disk: ops=8192 concurrency=32 elapsed=16.271s ops/sec=503.48
+rust_raw_block: ops=8192 concurrency=32 elapsed=0.007s ops/sec=1133321.93
+Wrote results to /home/luyzh/tmp_lab11/bench_c32_od.json
+=== END c32_od exit=0 16:33:12 ===
+ALL RUNS DONE

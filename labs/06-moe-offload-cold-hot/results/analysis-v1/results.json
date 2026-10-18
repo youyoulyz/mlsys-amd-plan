@@ -1,0 +1,2372 @@
+{
+  "trace": "/mnt/luyuzhou/hpc/FreeToken/experiments/qwen3.6-35b-a3b-nvfp4-moe-offload/traces/trace-410395.tsv",
+  "model": {
+    "layers": 40,
+    "experts_per_layer": 256,
+    "topk": 8,
+    "expert_bytes": 1775616,
+    "full_layer_stream_gib": 0.42333984375,
+    "full_model_pass_gib": 16.93359375
+  },
+  "decode_segments": {
+    "math": {
+      "steps": 255,
+      "route_exposures": 81600,
+      "hit_rate": 0.7780147058823529,
+      "missing_per_token": 71.03529411764706,
+      "fetched_per_token": 22.08627450980392,
+      "cpu_per_token": 48.949019607843134,
+      "fetched_fraction_of_misses": 0.3109197305951198,
+      "resident_total_mean": 3862.1803921568626,
+      "resident_total_p5": 903.8000000000001,
+      "resident_total_p50": 4407.0,
+      "resident_total_p95": 5608.599999999999,
+      "fetched_p50": 17.0,
+      "fetched_p95": 51.0,
+      "fetched_p99": 79.84000000000003,
+      "missing_p50": 59.0,
+      "missing_p95": 153.89999999999995,
+      "cpu_p95": 104.29999999999998,
+      "fetched_bytes_mib_per_token": 37.4,
+      "cpu_bytes_mib_per_token": 82.88828124999999,
+      "windows": {
+        "first_8": {
+          "tokens": 8,
+          "fetched_per_token": 66.25,
+          "cpu_per_token": 130.0,
+          "missing_per_token": 196.25,
+          "hit_rate": 0.38671875,
+          "resident_total_mean": 384.0
+        },
+        "first_32": {
+          "tokens": 32,
+          "fetched_per_token": 49.9375,
+          "cpu_per_token": 98.75,
+          "missing_per_token": 148.6875,
+          "hit_rate": 0.5353515625,
+          "resident_total_mean": 976.84375
+        },
+        "last_128": {
+          "tokens": 128,
+          "fetched_per_token": 10.3984375,
+          "cpu_per_token": 28.78125,
+          "missing_per_token": 39.1796875,
+          "hit_rate": 0.8775634765625,
+          "resident_total_mean": 5163.9375
+        }
+      },
+      "rolling32_fetched_min": 5.34375,
+      "rolling32_fetched_max": 104.0,
+      "fetched_std": 17.0273254391557,
+      "fetched_cv": 0.7709460204163181,
+      "fetched_lag1_corr": 0.8669309267292722
+    },
+    "python": {
+      "steps": 255,
+      "route_exposures": 81600,
+      "hit_rate": 0.9158823529411765,
+      "missing_per_token": 26.91764705882353,
+      "fetched_per_token": 5.854901960784313,
+      "cpu_per_token": 21.062745098039215,
+      "fetched_fraction_of_misses": 0.217511655011655,
+      "resident_total_mean": 6294.866666666667,
+      "resident_total_p5": 5696.3,
+      "resident_total_p50": 6365.0,
+      "resident_total_p95": 6693.6,
+      "fetched_p50": 3.0,
+      "fetched_p95": 22.0,
+      "fetched_p99": 48.380000000000024,
+      "missing_p50": 20.0,
+      "missing_p95": 67.29999999999998,
+      "cpu_p95": 45.29999999999998,
+      "fetched_bytes_mib_per_token": 9.914453125,
+      "cpu_bytes_mib_per_token": 35.666796875,
+      "windows": {
+        "first_8": {
+          "tokens": 8,
+          "fetched_per_token": 43.0,
+          "cpu_per_token": 87.75,
+          "missing_per_token": 130.75,
+          "hit_rate": 0.59140625,
+          "resident_total_mean": 5420.5
+        },
+        "first_32": {
+          "tokens": 32,
+          "fetched_per_token": 17.6875,
+          "cpu_per_token": 43.0625,
+          "missing_per_token": 60.75,
+          "hit_rate": 0.81015625,
+          "resident_total_mean": 5649.25
+        },
+        "last_128": {
+          "tokens": 128,
+          "fetched_per_token": 2.765625,
+          "cpu_per_token": 15.296875,
+          "missing_per_token": 18.0625,
+          "hit_rate": 0.9435546875,
+          "resident_total_mean": 6550.3125
+        }
+      },
+      "rolling32_fetched_min": 1.8125,
+      "rolling32_fetched_max": 77.0,
+      "fetched_std": 9.366530186546475,
+      "fetched_cv": 1.59977575188838,
+      "fetched_lag1_corr": 0.85068074665778
+    },
+    "moe": {
+      "steps": 255,
+      "route_exposures": 81600,
+      "hit_rate": 0.9450367647058824,
+      "missing_per_token": 17.58823529411765,
+      "fetched_per_token": 2.980392156862745,
+      "cpu_per_token": 14.607843137254902,
+      "fetched_fraction_of_misses": 0.16945373467112598,
+      "resident_total_mean": 6808.03137254902,
+      "resident_total_p5": 6568.6,
+      "resident_total_p50": 6846.0,
+      "resident_total_p95": 6957.3,
+      "fetched_p50": 1.0,
+      "fetched_p95": 8.0,
+      "fetched_p99": 40.220000000000056,
+      "missing_p50": 13.0,
+      "missing_p95": 37.0,
+      "cpu_p95": 29.299999999999983,
+      "fetched_bytes_mib_per_token": 5.046875,
+      "cpu_bytes_mib_per_token": 24.736328125,
+      "windows": {
+        "first_8": {
+          "tokens": 8,
+          "fetched_per_token": 38.125,
+          "cpu_per_token": 77.0,
+          "missing_per_token": 115.125,
+          "hit_rate": 0.6402343749999999,
+          "resident_total_mean": 6379.75
+        },
+        "first_32": {
+          "tokens": 32,
+          "fetched_per_token": 12.75,
+          "cpu_per_token": 33.875,
+          "missing_per_token": 46.625,
+          "hit_rate": 0.854296875,
+          "resident_total_mean": 6536.65625
+        },
+        "last_128": {
+          "tokens": 128,
+          "fetched_per_token": 0.9453125,
+          "cpu_per_token": 10.546875,
+          "missing_per_token": 11.4921875,
+          "hit_rate": 0.9640869140625001,
+          "resident_total_mean": 6912.046875
+        }
+      },
+      "rolling32_fetched_min": 0.625,
+      "rolling32_fetched_max": 73.0,
+      "fetched_std": 7.5050053783169215,
+      "fetched_cv": 2.5181268045668617,
+      "fetched_lag1_corr": 0.9290756642402309
+    }
+  },
+  "prefill_segments": {
+    "prefill_7k": {
+      "chunks": [
+        0
+      ],
+      "tokens": 7056,
+      "resident_per_layer_mean": 0.0,
+      "resident_per_layer_min": 0,
+      "resident_per_layer_max": 0,
+      "active_unique_mean": 231.6,
+      "active_unique_min": 212,
+      "active_unique_max": 249,
+      "active_resident_unique_mean": 0.0,
+      "route_hit_fraction": 0.0,
+      "streamed_experts_per_layer_chunk": 256,
+      "streamed_expert_bytes_per_token_mean": 64421.44217687075,
+      "top_routed_expert_ids": [
+        {
+          "expert": 158,
+          "routes": 19735
+        },
+        {
+          "expert": 209,
+          "routes": 19321
+        },
+        {
+          "expert": 218,
+          "routes": 18172
+        },
+        {
+          "expert": 137,
+          "routes": 16745
+        },
+        {
+          "expert": 247,
+          "routes": 15860
+        },
+        {
+          "expert": 18,
+          "routes": 15008
+        },
+        {
+          "expert": 154,
+          "routes": 14425
+        },
+        {
+          "expert": 73,
+          "routes": 14370
+        },
+        {
+          "expert": 141,
+          "routes": 14334
+        },
+        {
+          "expert": 64,
+          "routes": 14095
+        },
+        {
+          "expert": 249,
+          "routes": 13679
+        },
+        {
+          "expert": 168,
+          "routes": 13662
+        },
+        {
+          "expert": 66,
+          "routes": 13600
+        },
+        {
+          "expert": 98,
+          "routes": 13522
+        },
+        {
+          "expert": 205,
+          "routes": 13391
+        },
+        {
+          "expert": 127,
+          "routes": 13371
+        },
+        {
+          "expert": 42,
+          "routes": 13108
+        },
+        {
+          "expert": 81,
+          "routes": 13090
+        },
+        {
+          "expert": 226,
+          "routes": 13051
+        },
+        {
+          "expert": 108,
+          "routes": 13007
+        }
+      ],
+      "top_missing_expert_ids": [
+        {
+          "expert": 158,
+          "misses": 19735
+        },
+        {
+          "expert": 209,
+          "misses": 19321
+        },
+        {
+          "expert": 218,
+          "misses": 18172
+        },
+        {
+          "expert": 137,
+          "misses": 16745
+        },
+        {
+          "expert": 247,
+          "misses": 15860
+        },
+        {
+          "expert": 18,
+          "misses": 15008
+        },
+        {
+          "expert": 154,
+          "misses": 14425
+        },
+        {
+          "expert": 73,
+          "misses": 14370
+        },
+        {
+          "expert": 141,
+          "misses": 14334
+        },
+        {
+          "expert": 64,
+          "misses": 14095
+        },
+        {
+          "expert": 249,
+          "misses": 13679
+        },
+        {
+          "expert": 168,
+          "misses": 13662
+        },
+        {
+          "expert": 66,
+          "misses": 13600
+        },
+        {
+          "expert": 98,
+          "misses": 13522
+        },
+        {
+          "expert": 205,
+          "misses": 13391
+        },
+        {
+          "expert": 127,
+          "misses": 13371
+        },
+        {
+          "expert": 42,
+          "misses": 13108
+        },
+        {
+          "expert": 81,
+          "misses": 13090
+        },
+        {
+          "expert": 226,
+          "misses": 13051
+        },
+        {
+          "expert": 108,
+          "misses": 13007
+        }
+      ]
+    },
+    "prefill_32k": {
+      "chunks": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "tokens": 32055,
+      "resident_per_layer_mean": 2.5125,
+      "resident_per_layer_min": 1,
+      "resident_per_layer_max": 20,
+      "active_unique_mean": 206.6875,
+      "active_unique_min": 135,
+      "active_unique_max": 251,
+      "active_resident_unique_mean": 2.35625,
+      "route_hit_fraction": 0.018512420059273123,
+      "streamed_experts_per_layer_chunk": 256,
+      "streamed_expert_bytes_per_token_mean": 56810.46770958684,
+      "top_routed_expert_ids": [
+        {
+          "expert": 158,
+          "routes": 93489
+        },
+        {
+          "expert": 209,
+          "routes": 81297
+        },
+        {
+          "expert": 137,
+          "routes": 75351
+        },
+        {
+          "expert": 18,
+          "routes": 72789
+        },
+        {
+          "expert": 154,
+          "routes": 72720
+        },
+        {
+          "expert": 66,
+          "routes": 72665
+        },
+        {
+          "expert": 108,
+          "routes": 72279
+        },
+        {
+          "expert": 165,
+          "routes": 71878
+        },
+        {
+          "expert": 218,
+          "routes": 71459
+        },
+        {
+          "expert": 73,
+          "routes": 70734
+        },
+        {
+          "expert": 42,
+          "routes": 67325
+        },
+        {
+          "expert": 166,
+          "routes": 64741
+        },
+        {
+          "expert": 127,
+          "routes": 64292
+        },
+        {
+          "expert": 247,
+          "routes": 63271
+        },
+        {
+          "expert": 190,
+          "routes": 62970
+        },
+        {
+          "expert": 27,
+          "routes": 62118
+        },
+        {
+          "expert": 235,
+          "routes": 61867
+        },
+        {
+          "expert": 215,
+          "routes": 60744
+        },
+        {
+          "expert": 95,
+          "routes": 60188
+        },
+        {
+          "expert": 160,
+          "routes": 58833
+        }
+      ],
+      "top_missing_expert_ids": [
+        {
+          "expert": 158,
+          "misses": 373944
+        },
+        {
+          "expert": 137,
+          "misses": 294756
+        },
+        {
+          "expert": 18,
+          "misses": 291156
+        },
+        {
+          "expert": 154,
+          "misses": 290880
+        },
+        {
+          "expert": 165,
+          "misses": 287512
+        },
+        {
+          "expert": 108,
+          "misses": 287224
+        },
+        {
+          "expert": 218,
+          "misses": 285836
+        },
+        {
+          "expert": 73,
+          "misses": 282492
+        },
+        {
+          "expert": 42,
+          "misses": 268440
+        },
+        {
+          "expert": 66,
+          "misses": 265612
+        },
+        {
+          "expert": 166,
+          "misses": 258964
+        },
+        {
+          "expert": 247,
+          "misses": 253084
+        },
+        {
+          "expert": 190,
+          "misses": 251880
+        },
+        {
+          "expert": 27,
+          "misses": 248472
+        },
+        {
+          "expert": 235,
+          "misses": 247468
+        },
+        {
+          "expert": 127,
+          "misses": 243600
+        },
+        {
+          "expert": 215,
+          "misses": 242976
+        },
+        {
+          "expert": 95,
+          "misses": 240752
+        },
+        {
+          "expert": 81,
+          "misses": 234110
+        },
+        {
+          "expert": 226,
+          "misses": 231172
+        }
+      ]
+    },
+    "prefill_60k": {
+      "chunks": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "tokens": 60058,
+      "resident_per_layer_mean": 2.70625,
+      "resident_per_layer_min": 1,
+      "resident_per_layer_max": 20,
+      "active_unique_mean": 199.575,
+      "active_unique_min": 132,
+      "active_unique_max": 249,
+      "active_resident_unique_mean": 2.521875,
+      "route_hit_fraction": 0.02020395908954677,
+      "streamed_experts_per_layer_chunk": 256,
+      "streamed_expert_bytes_per_token_mean": 69487.78187177598,
+      "top_routed_expert_ids": [
+        {
+          "expert": 158,
+          "routes": 173864
+        },
+        {
+          "expert": 209,
+          "routes": 150184
+        },
+        {
+          "expert": 154,
+          "routes": 148065
+        },
+        {
+          "expert": 165,
+          "routes": 145736
+        },
+        {
+          "expert": 66,
+          "routes": 142934
+        },
+        {
+          "expert": 108,
+          "routes": 142787
+        },
+        {
+          "expert": 137,
+          "routes": 142192
+        },
+        {
+          "expert": 18,
+          "routes": 133565
+        },
+        {
+          "expert": 73,
+          "routes": 131008
+        },
+        {
+          "expert": 218,
+          "routes": 127020
+        },
+        {
+          "expert": 42,
+          "routes": 123587
+        },
+        {
+          "expert": 95,
+          "routes": 123029
+        },
+        {
+          "expert": 127,
+          "routes": 121913
+        },
+        {
+          "expert": 166,
+          "routes": 121834
+        },
+        {
+          "expert": 27,
+          "routes": 121690
+        },
+        {
+          "expert": 190,
+          "routes": 116831
+        },
+        {
+          "expert": 160,
+          "routes": 115779
+        },
+        {
+          "expert": 215,
+          "routes": 115624
+        },
+        {
+          "expert": 247,
+          "routes": 113098
+        },
+        {
+          "expert": 235,
+          "routes": 112574
+        }
+      ],
+      "top_missing_expert_ids": [
+        {
+          "expert": 158,
+          "misses": 1390896
+        },
+        {
+          "expert": 154,
+          "misses": 1184520
+        },
+        {
+          "expert": 165,
+          "misses": 1165888
+        },
+        {
+          "expert": 108,
+          "misses": 1133032
+        },
+        {
+          "expert": 137,
+          "misses": 1113880
+        },
+        {
+          "expert": 18,
+          "misses": 1068520
+        },
+        {
+          "expert": 66,
+          "misses": 1066776
+        },
+        {
+          "expert": 73,
+          "misses": 1047232
+        },
+        {
+          "expert": 218,
+          "misses": 1016160
+        },
+        {
+          "expert": 42,
+          "misses": 986088
+        },
+        {
+          "expert": 95,
+          "misses": 984232
+        },
+        {
+          "expert": 166,
+          "misses": 974672
+        },
+        {
+          "expert": 27,
+          "misses": 973520
+        },
+        {
+          "expert": 190,
+          "misses": 934648
+        },
+        {
+          "expert": 215,
+          "misses": 924992
+        },
+        {
+          "expert": 127,
+          "misses": 912448
+        },
+        {
+          "expert": 247,
+          "misses": 904784
+        },
+        {
+          "expert": 235,
+          "misses": 900592
+        },
+        {
+          "expert": 8,
+          "misses": 884992
+        },
+        {
+          "expert": 130,
+          "misses": 873207
+        }
+      ]
+    },
+    "math_prefill": {
+      "chunks": [
+        13
+      ],
+      "tokens": 89,
+      "resident_per_layer_mean": 3.1,
+      "resident_per_layer_min": 1,
+      "resident_per_layer_max": 20,
+      "active_unique_mean": 133.925,
+      "active_unique_min": 107,
+      "active_unique_max": 214,
+      "active_resident_unique_mean": 2.725,
+      "route_hit_fraction": 0.03908005617977528,
+      "streamed_experts_per_layer_chunk": 256,
+      "streamed_expert_bytes_per_token_mean": 5107389.842696629,
+      "top_routed_expert_ids": [
+        {
+          "expert": 165,
+          "routes": 241
+        },
+        {
+          "expert": 87,
+          "routes": 240
+        },
+        {
+          "expert": 95,
+          "routes": 240
+        },
+        {
+          "expert": 130,
+          "routes": 239
+        },
+        {
+          "expert": 204,
+          "routes": 236
+        },
+        {
+          "expert": 162,
+          "routes": 221
+        },
+        {
+          "expert": 218,
+          "routes": 221
+        },
+        {
+          "expert": 191,
+          "routes": 220
+        },
+        {
+          "expert": 134,
+          "routes": 215
+        },
+        {
+          "expert": 64,
+          "routes": 211
+        },
+        {
+          "expert": 151,
+          "routes": 208
+        },
+        {
+          "expert": 160,
+          "routes": 208
+        },
+        {
+          "expert": 243,
+          "routes": 208
+        },
+        {
+          "expert": 54,
+          "routes": 204
+        },
+        {
+          "expert": 35,
+          "routes": 202
+        },
+        {
+          "expert": 41,
+          "routes": 199
+        },
+        {
+          "expert": 154,
+          "routes": 199
+        },
+        {
+          "expert": 224,
+          "routes": 198
+        },
+        {
+          "expert": 47,
+          "routes": 194
+        },
+        {
+          "expert": 121,
+          "routes": 193
+        }
+      ],
+      "top_missing_expert_ids": [
+        {
+          "expert": 165,
+          "misses": 241
+        },
+        {
+          "expert": 87,
+          "misses": 240
+        },
+        {
+          "expert": 95,
+          "misses": 240
+        },
+        {
+          "expert": 204,
+          "misses": 227
+        },
+        {
+          "expert": 218,
+          "misses": 221
+        },
+        {
+          "expert": 191,
+          "misses": 220
+        },
+        {
+          "expert": 134,
+          "misses": 214
+        },
+        {
+          "expert": 151,
+          "misses": 208
+        },
+        {
+          "expert": 64,
+          "misses": 203
+        },
+        {
+          "expert": 41,
+          "misses": 199
+        },
+        {
+          "expert": 154,
+          "misses": 199
+        },
+        {
+          "expert": 224,
+          "misses": 198
+        },
+        {
+          "expert": 121,
+          "misses": 193
+        },
+        {
+          "expert": 47,
+          "misses": 190
+        },
+        {
+          "expert": 160,
+          "misses": 190
+        },
+        {
+          "expert": 234,
+          "misses": 188
+        },
+        {
+          "expert": 54,
+          "misses": 187
+        },
+        {
+          "expert": 185,
+          "misses": 183
+        },
+        {
+          "expert": 130,
+          "misses": 181
+        },
+        {
+          "expert": 81,
+          "misses": 180
+        }
+      ]
+    },
+    "python_prefill": {
+      "chunks": [
+        14
+      ],
+      "tokens": 74,
+      "resident_per_layer_mean": 131.175,
+      "resident_per_layer_min": 87,
+      "resident_per_layer_max": 210,
+      "active_unique_mean": 123.925,
+      "active_unique_min": 99,
+      "active_unique_max": 192,
+      "active_resident_unique_mean": 75.075,
+      "route_hit_fraction": 0.6211148648648649,
+      "streamed_experts_per_layer_chunk": 256,
+      "streamed_expert_bytes_per_token_mean": 6142671.567567567,
+      "top_routed_expert_ids": [
+        {
+          "expert": 35,
+          "routes": 253
+        },
+        {
+          "expert": 154,
+          "routes": 221
+        },
+        {
+          "expert": 47,
+          "routes": 211
+        },
+        {
+          "expert": 87,
+          "routes": 208
+        },
+        {
+          "expert": 1,
+          "routes": 205
+        },
+        {
+          "expert": 204,
+          "routes": 204
+        },
+        {
+          "expert": 64,
+          "routes": 195
+        },
+        {
+          "expert": 95,
+          "routes": 189
+        },
+        {
+          "expert": 130,
+          "routes": 187
+        },
+        {
+          "expert": 151,
+          "routes": 173
+        },
+        {
+          "expert": 209,
+          "routes": 173
+        },
+        {
+          "expert": 89,
+          "routes": 168
+        },
+        {
+          "expert": 203,
+          "routes": 165
+        },
+        {
+          "expert": 224,
+          "routes": 164
+        },
+        {
+          "expert": 134,
+          "routes": 163
+        },
+        {
+          "expert": 167,
+          "routes": 162
+        },
+        {
+          "expert": 81,
+          "routes": 161
+        },
+        {
+          "expert": 165,
+          "routes": 159
+        },
+        {
+          "expert": 207,
+          "routes": 157
+        },
+        {
+          "expert": 14,
+          "routes": 156
+        }
+      ],
+      "top_missing_expert_ids": [
+        {
+          "expert": 89,
+          "misses": 129
+        },
+        {
+          "expert": 1,
+          "misses": 124
+        },
+        {
+          "expert": 229,
+          "misses": 113
+        },
+        {
+          "expert": 238,
+          "misses": 113
+        },
+        {
+          "expert": 64,
+          "misses": 105
+        },
+        {
+          "expert": 204,
+          "misses": 103
+        },
+        {
+          "expert": 127,
+          "misses": 99
+        },
+        {
+          "expert": 28,
+          "misses": 93
+        },
+        {
+          "expert": 224,
+          "misses": 93
+        },
+        {
+          "expert": 39,
+          "misses": 91
+        },
+        {
+          "expert": 35,
+          "misses": 89
+        },
+        {
+          "expert": 130,
+          "misses": 88
+        },
+        {
+          "expert": 202,
+          "misses": 86
+        },
+        {
+          "expert": 95,
+          "misses": 85
+        },
+        {
+          "expert": 252,
+          "misses": 84
+        },
+        {
+          "expert": 36,
+          "misses": 81
+        },
+        {
+          "expert": 189,
+          "misses": 79
+        },
+        {
+          "expert": 25,
+          "misses": 78
+        },
+        {
+          "expert": 165,
+          "misses": 76
+        },
+        {
+          "expert": 191,
+          "misses": 75
+        }
+      ]
+    },
+    "moe_prefill": {
+      "chunks": [
+        15
+      ],
+      "tokens": 80,
+      "resident_per_layer_mean": 155.475,
+      "resident_per_layer_min": 120,
+      "resident_per_layer_max": 227,
+      "active_unique_mean": 123.5,
+      "active_unique_min": 100,
+      "active_unique_max": 194,
+      "active_resident_unique_mean": 88.3,
+      "route_hit_fraction": 0.7415234375,
+      "streamed_experts_per_layer_chunk": 256,
+      "streamed_expert_bytes_per_token_mean": 5681971.2,
+      "top_routed_expert_ids": [
+        {
+          "expert": 151,
+          "routes": 246
+        },
+        {
+          "expert": 64,
+          "routes": 232
+        },
+        {
+          "expert": 154,
+          "routes": 232
+        },
+        {
+          "expert": 87,
+          "routes": 230
+        },
+        {
+          "expert": 35,
+          "routes": 229
+        },
+        {
+          "expert": 165,
+          "routes": 224
+        },
+        {
+          "expert": 224,
+          "routes": 219
+        },
+        {
+          "expert": 47,
+          "routes": 215
+        },
+        {
+          "expert": 134,
+          "routes": 207
+        },
+        {
+          "expert": 117,
+          "routes": 203
+        },
+        {
+          "expert": 191,
+          "routes": 200
+        },
+        {
+          "expert": 130,
+          "routes": 199
+        },
+        {
+          "expert": 41,
+          "routes": 197
+        },
+        {
+          "expert": 95,
+          "routes": 196
+        },
+        {
+          "expert": 209,
+          "routes": 195
+        },
+        {
+          "expert": 203,
+          "routes": 193
+        },
+        {
+          "expert": 81,
+          "routes": 191
+        },
+        {
+          "expert": 189,
+          "routes": 189
+        },
+        {
+          "expert": 14,
+          "routes": 172
+        },
+        {
+          "expert": 56,
+          "routes": 171
+        }
+      ],
+      "top_missing_expert_ids": [
+        {
+          "expert": 224,
+          "misses": 117
+        },
+        {
+          "expert": 189,
+          "misses": 114
+        },
+        {
+          "expert": 64,
+          "misses": 108
+        },
+        {
+          "expert": 89,
+          "misses": 106
+        },
+        {
+          "expert": 127,
+          "misses": 98
+        },
+        {
+          "expert": 130,
+          "misses": 92
+        },
+        {
+          "expert": 95,
+          "misses": 88
+        },
+        {
+          "expert": 25,
+          "misses": 86
+        },
+        {
+          "expert": 39,
+          "misses": 77
+        },
+        {
+          "expert": 137,
+          "misses": 77
+        },
+        {
+          "expert": 35,
+          "misses": 72
+        },
+        {
+          "expert": 203,
+          "misses": 68
+        },
+        {
+          "expert": 132,
+          "misses": 63
+        },
+        {
+          "expert": 20,
+          "misses": 60
+        },
+        {
+          "expert": 28,
+          "misses": 60
+        },
+        {
+          "expert": 174,
+          "misses": 60
+        },
+        {
+          "expert": 240,
+          "misses": 60
+        },
+        {
+          "expert": 81,
+          "misses": 58
+        },
+        {
+          "expert": 238,
+          "misses": 57
+        },
+        {
+          "expert": 252,
+          "misses": 56
+        }
+      ]
+    }
+  },
+  "notes": {
+    "fetched": "expert rows assigned a GPU slot and copied over PCIe",
+    "cpu": "missed expert rows left non-resident and computed on host CPU",
+    "prefill_stream": "full 256-expert layer is copied into volatile double buffers for each chunk; prefill_hit_d2d was disabled"
+  },
+  "decode_expert_summary": {
+    "math": {
+      "layer_experts": 10240,
+      "never_resident": 4511,
+      "top_fetched": [
+        {
+          "layer": 0,
+          "expert": 0,
+          "routes": 5,
+          "misses": 1,
+          "fetched": 1,
+          "cpu": 0,
+          "resident_rate": 0.8745098039215686
+        },
+        {
+          "layer": 0,
+          "expert": 1,
+          "routes": 24,
+          "misses": 3,
+          "fetched": 1,
+          "cpu": 2,
+          "resident_rate": 0.792156862745098
+        },
+        {
+          "layer": 0,
+          "expert": 3,
+          "routes": 11,
+          "misses": 1,
+          "fetched": 1,
+          "cpu": 0,
+          "resident_rate": 0.8
+        },
+        {
+          "layer": 0,
+          "expert": 4,
+          "routes": 28,
+          "misses": 2,
+          "fetched": 1,
+          "cpu": 1,
+          "resident_rate": 0.6745098039215687
+        },
+        {
+          "layer": 0,
+          "expert": 5,
+          "routes": 7,
+          "misses": 1,
+          "fetched": 1,
+          "cpu": 0,
+          "resident_rate": 0.8274509803921568
+        },
+        {
+          "layer": 0,
+          "expert": 6,
+          "routes": 9,
+          "misses": 1,
+          "fetched": 1,
+          "cpu": 0,
+          "resident_rate": 0.7137254901960784
+        },
+        {
+          "layer": 0,
+          "expert": 7,
+          "routes": 5,
+          "misses": 2,
+          "fetched": 1,
+          "cpu": 1,
+          "resident_rate": 0.6352941176470588
+        },
+        {
+          "layer": 0,
+          "expert": 8,
+          "routes": 11,
+          "misses": 2,
+          "fetched": 1,
+          "cpu": 1,
+          "resident_rate": 0.8627450980392157
+        },
+        {
+          "layer": 0,
+          "expert": 9,
+          "routes": 7,
+          "misses": 3,
+          "fetched": 1,
+          "cpu": 2,
+          "resident_rate": 0.35294117647058826
+        },
+        {
+          "layer": 0,
+          "expert": 10,
+          "routes": 6,
+          "misses": 2,
+          "fetched": 1,
+          "cpu": 1,
+          "resident_rate": 0.6784313725490196
+        },
+        {
+          "layer": 0,
+          "expert": 11,
+          "routes": 7,
+          "misses": 1,
+          "fetched": 1,
+          "cpu": 0,
+          "resident_rate": 0.9764705882352941
+        },
+        {
+          "layer": 0,
+          "expert": 12,
+          "routes": 8,
+          "misses": 3,
+          "fetched": 1,
+          "cpu": 2,
+          "resident_rate": 0.7686274509803922
+        },
+        {
+          "layer": 0,
+          "expert": 13,
+          "routes": 14,
+          "misses": 2,
+          "fetched": 1,
+          "cpu": 1,
+          "resident_rate": 0.9450980392156862
+        },
+        {
+          "layer": 0,
+          "expert": 14,
+          "routes": 8,
+          "misses": 1,
+          "fetched": 1,
+          "cpu": 0,
+          "resident_rate": 0.9921568627450981
+        },
+        {
+          "layer": 0,
+          "expert": 15,
+          "routes": 1,
+          "misses": 1,
+          "fetched": 1,
+          "cpu": 0,
+          "resident_rate": 0.5411764705882353
+        },
+        {
+          "layer": 0,
+          "expert": 17,
+          "routes": 4,
+          "misses": 3,
+          "fetched": 1,
+          "cpu": 2,
+          "resident_rate": 0.8313725490196079
+        },
+        {
+          "layer": 0,
+          "expert": 18,
+          "routes": 8,
+          "misses": 2,
+          "fetched": 1,
+          "cpu": 1,
+          "resident_rate": 0.7254901960784313
+        },
+        {
+          "layer": 0,
+          "expert": 19,
+          "routes": 8,
+          "misses": 8,
+          "fetched": 1,
+          "cpu": 7,
+          "resident_rate": 0.054901960784313725
+        },
+        {
+          "layer": 0,
+          "expert": 20,
+          "routes": 1,
+          "misses": 1,
+          "fetched": 1,
+          "cpu": 0,
+          "resident_rate": 0.9137254901960784
+        },
+        {
+          "layer": 0,
+          "expert": 22,
+          "routes": 5,
+          "misses": 2,
+          "fetched": 1,
+          "cpu": 1,
+          "resident_rate": 0.6549019607843137
+        }
+      ],
+      "top_routed": [
+        {
+          "layer": 4,
+          "expert": 134,
+          "routes": 150,
+          "misses": 3,
+          "fetched": 1,
+          "cpu": 2,
+          "resident_rate": 0.9529411764705882
+        },
+        {
+          "layer": 9,
+          "expert": 225,
+          "routes": 148,
+          "misses": 4,
+          "fetched": 1,
+          "cpu": 3,
+          "resident_rate": 0.9098039215686274
+        },
+        {
+          "layer": 8,
+          "expert": 232,
+          "routes": 139,
+          "misses": 2,
+          "fetched": 1,
+          "cpu": 1,
+          "resident_rate": 0.9647058823529412
+        },
+        {
+          "layer": 14,
+          "expert": 54,
+          "routes": 139,
+          "misses": 1,
+          "fetched": 1,
+          "cpu": 0,
+          "resident_rate": 0.996078431372549
+        },
+        {
+          "layer": 7,
+          "expert": 11,
+          "routes": 135,
+          "misses": 2,
+          "fetched": 1,
+          "cpu": 1,
+          "resident_rate": 0.9490196078431372
+        },
+        {
+          "layer": 26,
+          "expert": 54,
+          "routes": 134,
+          "misses": 2,
+          "fetched": 1,
+          "cpu": 1,
+          "resident_rate": 0.9921568627450981
+        },
+        {
+          "layer": 9,
+          "expert": 100,
+          "routes": 130,
+          "misses": 3,
+          "fetched": 1,
+          "cpu": 2,
+          "resident_rate": 0.9490196078431372
+        },
+        {
+          "layer": 7,
+          "expert": 116,
+          "routes": 128,
+          "misses": 1,
+          "fetched": 1,
+          "cpu": 0,
+          "resident_rate": 0.9882352941176471
+        },
+        {
+          "layer": 28,
+          "expert": 243,
+          "routes": 128,
+          "misses": 2,
+          "fetched": 1,
+          "cpu": 1,
+          "resident_rate": 0.9058823529411765
+        },
+        {
+          "layer": 15,
+          "expert": 204,
+          "routes": 121,
+          "misses": 2,
+          "fetched": 1,
+          "cpu": 1,
+          "resident_rate": 0.9921568627450981
+        },
+        {
+          "layer": 29,
+          "expert": 251,
+          "routes": 120,
+          "misses": 2,
+          "fetched": 1,
+          "cpu": 1,
+          "resident_rate": 0.9647058823529412
+        },
+        {
+          "layer": 20,
+          "expert": 191,
+          "routes": 112,
+          "misses": 1,
+          "fetched": 1,
+          "cpu": 0,
+          "resident_rate": 0.996078431372549
+        },
+        {
+          "layer": 20,
+          "expert": 232,
+          "routes": 108,
+          "misses": 3,
+          "fetched": 1,
+          "cpu": 2,
+          "resident_rate": 0.9568627450980393
+        },
+        {
+          "layer": 5,
+          "expert": 251,
+          "routes": 107,
+          "misses": 3,
+          "fetched": 1,
+          "cpu": 2,
+          "resident_rate": 0.9882352941176471
+        },
+        {
+          "layer": 13,
+          "expert": 13,
+          "routes": 106,
+          "misses": 2,
+          "fetched": 1,
+          "cpu": 1,
+          "resident_rate": 0.8980392156862745
+        },
+        {
+          "layer": 17,
+          "expert": 251,
+          "routes": 106,
+          "misses": 2,
+          "fetched": 1,
+          "cpu": 1,
+          "resident_rate": 0.9647058823529412
+        },
+        {
+          "layer": 18,
+          "expert": 121,
+          "routes": 106,
+          "misses": 6,
+          "fetched": 1,
+          "cpu": 5,
+          "resident_rate": 0.8196078431372549
+        },
+        {
+          "layer": 19,
+          "expert": 201,
+          "routes": 105,
+          "misses": 1,
+          "fetched": 1,
+          "cpu": 0,
+          "resident_rate": 0.996078431372549
+        },
+        {
+          "layer": 20,
+          "expert": 144,
+          "routes": 105,
+          "misses": 2,
+          "fetched": 1,
+          "cpu": 1,
+          "resident_rate": 0.9647058823529412
+        },
+        {
+          "layer": 18,
+          "expert": 234,
+          "routes": 103,
+          "misses": 2,
+          "fetched": 1,
+          "cpu": 1,
+          "resident_rate": 0.9647058823529412
+        }
+      ]
+    },
+    "python": {
+      "layer_experts": 10240,
+      "never_resident": 3521,
+      "top_fetched": [
+        {
+          "layer": 0,
+          "expert": 11,
+          "routes": 12,
+          "misses": 4,
+          "fetched": 1,
+          "cpu": 3,
+          "resident_rate": 0.5490196078431373
+        },
+        {
+          "layer": 0,
+          "expert": 14,
+          "routes": 16,
+          "misses": 2,
+          "fetched": 1,
+          "cpu": 1,
+          "resident_rate": 0.9882352941176471
+        },
+        {
+          "layer": 0,
+          "expert": 16,
+          "routes": 6,
+          "misses": 2,
+          "fetched": 1,
+          "cpu": 1,
+          "resident_rate": 0.3411764705882353
+        },
+        {
+          "layer": 0,
+          "expert": 21,
+          "routes": 7,
+          "misses": 2,
+          "fetched": 1,
+          "cpu": 1,
+          "resident_rate": 0.7450980392156863
+        },
+        {
+          "layer": 0,
+          "expert": 25,
+          "routes": 16,
+          "misses": 2,
+          "fetched": 1,
+          "cpu": 1,
+          "resident_rate": 0.8784313725490196
+        },
+        {
+          "layer": 0,
+          "expert": 32,
+          "routes": 5,
+          "misses": 3,
+          "fetched": 1,
+          "cpu": 2,
+          "resident_rate": 0.6039215686274509
+        },
+        {
+          "layer": 0,
+          "expert": 35,
+          "routes": 12,
+          "misses": 1,
+          "fetched": 1,
+          "cpu": 0,
+          "resident_rate": 0.9764705882352941
+        },
+        {
+          "layer": 0,
+          "expert": 36,
+          "routes": 11,
+          "misses": 4,
+          "fetched": 1,
+          "cpu": 3,
+          "resident_rate": 0.7529411764705882
+        },
+        {
+          "layer": 0,
+          "expert": 37,
+          "routes": 4,
+          "misses": 3,
+          "fetched": 1,
+          "cpu": 2,
+          "resident_rate": 0.47843137254901963
+        },
+        {
+          "layer": 0,
+          "expert": 43,
+          "routes": 16,
+          "misses": 1,
+          "fetched": 1,
+          "cpu": 0,
+          "resident_rate": 0.996078431372549
+        },
+        {
+          "layer": 0,
+          "expert": 56,
+          "routes": 11,
+          "misses": 2,
+          "fetched": 1,
+          "cpu": 1,
+          "resident_rate": 0.7568627450980392
+        },
+        {
+          "layer": 0,
+          "expert": 57,
+          "routes": 14,
+          "misses": 1,
+          "fetched": 1,
+          "cpu": 0,
+          "resident_rate": 0.9921568627450981
+        },
+        {
+          "layer": 0,
+          "expert": 67,
+          "routes": 12,
+          "misses": 4,
+          "fetched": 1,
+          "cpu": 3,
+          "resident_rate": 0.6078431372549019
+        },
+        {
+          "layer": 0,
+          "expert": 77,
+          "routes": 7,
+          "misses": 2,
+          "fetched": 1,
+          "cpu": 1,
+          "resident_rate": 0.6627450980392157
+        },
+        {
+          "layer": 0,
+          "expert": 79,
+          "routes": 19,
+          "misses": 9,
+          "fetched": 1,
+          "cpu": 8,
+          "resident_rate": 0.5529411764705883
+        },
+        {
+          "layer": 0,
+          "expert": 81,
+          "routes": 9,
+          "misses": 2,
+          "fetched": 1,
+          "cpu": 1,
+          "resident_rate": 0.9333333333333333
+        },
+        {
+          "layer": 0,
+          "expert": 83,
+          "routes": 7,
+          "misses": 5,
+          "fetched": 1,
+          "cpu": 4,
+          "resident_rate": 0.30980392156862746
+        },
+        {
+          "layer": 0,
+          "expert": 84,
+          "routes": 7,
+          "misses": 3,
+          "fetched": 1,
+          "cpu": 2,
+          "resident_rate": 0.6941176470588235
+        },
+        {
+          "layer": 0,
+          "expert": 86,
+          "routes": 12,
+          "misses": 2,
+          "fetched": 1,
+          "cpu": 1,
+          "resident_rate": 0.7215686274509804
+        },
+        {
+          "layer": 0,
+          "expert": 99,
+          "routes": 17,
+          "misses": 2,
+          "fetched": 1,
+          "cpu": 1,
+          "resident_rate": 0.984313725490196
+        }
+      ],
+      "top_routed": [
+        {
+          "layer": 35,
+          "expert": 167,
+          "routes": 151,
+          "misses": 0,
+          "fetched": 0,
+          "cpu": 0,
+          "resident_rate": 1.0
+        },
+        {
+          "layer": 21,
+          "expert": 207,
+          "routes": 146,
+          "misses": 0,
+          "fetched": 0,
+          "cpu": 0,
+          "resident_rate": 1.0
+        },
+        {
+          "layer": 8,
+          "expert": 53,
+          "routes": 128,
+          "misses": 2,
+          "fetched": 1,
+          "cpu": 1,
+          "resident_rate": 0.9647058823529412
+        },
+        {
+          "layer": 9,
+          "expert": 207,
+          "routes": 126,
+          "misses": 0,
+          "fetched": 0,
+          "cpu": 0,
+          "resident_rate": 1.0
+        },
+        {
+          "layer": 20,
+          "expert": 53,
+          "routes": 125,
+          "misses": 0,
+          "fetched": 0,
+          "cpu": 0,
+          "resident_rate": 1.0
+        },
+        {
+          "layer": 33,
+          "expert": 81,
+          "routes": 125,
+          "misses": 1,
+          "fetched": 1,
+          "cpu": 0,
+          "resident_rate": 0.9882352941176471
+        },
+        {
+          "layer": 25,
+          "expert": 13,
+          "routes": 123,
+          "misses": 0,
+          "fetched": 0,
+          "cpu": 0,
+          "resident_rate": 1.0
+        },
+        {
+          "layer": 27,
+          "expert": 206,
+          "routes": 113,
+          "misses": 0,
+          "fetched": 0,
+          "cpu": 0,
+          "resident_rate": 1.0
+        },
+        {
+          "layer": 19,
+          "expert": 59,
+          "routes": 112,
+          "misses": 0,
+          "fetched": 0,
+          "cpu": 0,
+          "resident_rate": 1.0
+        },
+        {
+          "layer": 7,
+          "expert": 185,
+          "routes": 110,
+          "misses": 0,
+          "fetched": 0,
+          "cpu": 0,
+          "resident_rate": 1.0
+        },
+        {
+          "layer": 30,
+          "expert": 192,
+          "routes": 110,
+          "misses": 0,
+          "fetched": 0,
+          "cpu": 0,
+          "resident_rate": 1.0
+        },
+        {
+          "layer": 13,
+          "expert": 13,
+          "routes": 106,
+          "misses": 0,
+          "fetched": 0,
+          "cpu": 0,
+          "resident_rate": 1.0
+        },
+        {
+          "layer": 14,
+          "expert": 52,
+          "routes": 106,
+          "misses": 0,
+          "fetched": 0,
+          "cpu": 0,
+          "resident_rate": 1.0
+        },
+        {
+          "layer": 32,
+          "expert": 47,
+          "routes": 106,
+          "misses": 1,
+          "fetched": 1,
+          "cpu": 0,
+          "resident_rate": 0.9647058823529412
+        },
+        {
+          "layer": 18,
+          "expert": 91,
+          "routes": 105,
+          "misses": 1,
+          "fetched": 1,
+          "cpu": 0,
+          "resident_rate": 0.9882352941176471
+        },
+        {
+          "layer": 11,
+          "expert": 111,
+          "routes": 101,
+          "misses": 0,
+          "fetched": 0,
+          "cpu": 0,
+          "resident_rate": 1.0
+        },
+        {
+          "layer": 15,
+          "expert": 238,
+          "routes": 99,
+          "misses": 2,
+          "fetched": 1,
+          "cpu": 1,
+          "resident_rate": 0.9882352941176471
+        },
+        {
+          "layer": 35,
+          "expert": 36,
+          "routes": 99,
+          "misses": 4,
+          "fetched": 1,
+          "cpu": 3,
+          "resident_rate": 0.8235294117647058
+        },
+        {
+          "layer": 38,
+          "expert": 127,
+          "routes": 99,
+          "misses": 0,
+          "fetched": 0,
+          "cpu": 0,
+          "resident_rate": 1.0
+        },
+        {
+          "layer": 15,
+          "expert": 206,
+          "routes": 98,
+          "misses": 0,
+          "fetched": 0,
+          "cpu": 0,
+          "resident_rate": 1.0
+        }
+      ]
+    },
+    "moe": {
+      "layer_experts": 10240,
+      "never_resident": 3273,
+      "top_fetched": [
+        {
+          "layer": 0,
+          "expert": 14,
+          "routes": 10,
+          "misses": 2,
+          "fetched": 1,
+          "cpu": 1,
+          "resident_rate": 0.9882352941176471
+        },
+        {
+          "layer": 0,
+          "expert": 35,
+          "routes": 14,
+          "misses": 1,
+          "fetched": 1,
+          "cpu": 0,
+          "resident_rate": 0.9764705882352941
+        },
+        {
+          "layer": 0,
+          "expert": 43,
+          "routes": 20,
+          "misses": 1,
+          "fetched": 1,
+          "cpu": 0,
+          "resident_rate": 0.996078431372549
+        },
+        {
+          "layer": 0,
+          "expert": 57,
+          "routes": 4,
+          "misses": 1,
+          "fetched": 1,
+          "cpu": 0,
+          "resident_rate": 0.9921568627450981
+        },
+        {
+          "layer": 0,
+          "expert": 81,
+          "routes": 14,
+          "misses": 1,
+          "fetched": 1,
+          "cpu": 0,
+          "resident_rate": 0.9725490196078431
+        },
+        {
+          "layer": 0,
+          "expert": 90,
+          "routes": 11,
+          "misses": 6,
+          "fetched": 1,
+          "cpu": 5,
+          "resident_rate": 0.7686274509803922
+        },
+        {
+          "layer": 0,
+          "expert": 91,
+          "routes": 4,
+          "misses": 2,
+          "fetched": 1,
+          "cpu": 1,
+          "resident_rate": 0.6941176470588235
+        },
+        {
+          "layer": 0,
+          "expert": 99,
+          "routes": 12,
+          "misses": 2,
+          "fetched": 1,
+          "cpu": 1,
+          "resident_rate": 0.9529411764705882
+        },
+        {
+          "layer": 0,
+          "expert": 115,
+          "routes": 16,
+          "misses": 2,
+          "fetched": 1,
+          "cpu": 1,
+          "resident_rate": 0.9333333333333333
+        },
+        {
+          "layer": 0,
+          "expert": 134,
+          "routes": 12,
+          "misses": 5,
+          "fetched": 1,
+          "cpu": 4,
+          "resident_rate": 0.6980392156862745
+        },
+        {
+          "layer": 0,
+          "expert": 147,
+          "routes": 4,
+          "misses": 2,
+          "fetched": 1,
+          "cpu": 1,
+          "resident_rate": 0.9647058823529412
+        },
+        {
+          "layer": 0,
+          "expert": 232,
+          "routes": 7,
+          "misses": 3,
+          "fetched": 1,
+          "cpu": 2,
+          "resident_rate": 0.5254901960784314
+        },
+        {
+          "layer": 0,
+          "expert": 236,
+          "routes": 11,
+          "misses": 1,
+          "fetched": 1,
+          "cpu": 0,
+          "resident_rate": 0.996078431372549
+        },
+        {
+          "layer": 0,
+          "expert": 238,
+          "routes": 36,
+          "misses": 2,
+          "fetched": 1,
+          "cpu": 1,
+          "resident_rate": 0.9686274509803922
+        },
+        {
+          "layer": 1,
+          "expert": 7,
+          "routes": 7,
+          "misses": 2,
+          "fetched": 1,
+          "cpu": 1,
+          "resident_rate": 0.5882352941176471
+        },
+        {
+          "layer": 1,
+          "expert": 11,
+          "routes": 18,
+          "misses": 2,
+          "fetched": 1,
+          "cpu": 1,
+          "resident_rate": 0.9725490196078431
+        },
+        {
+          "layer": 1,
+          "expert": 16,
+          "routes": 18,
+          "misses": 3,
+          "fetched": 1,
+          "cpu": 2,
+          "resident_rate": 0.9764705882352941
+        },
+        {
+          "layer": 1,
+          "expert": 19,
+          "routes": 4,
+          "misses": 1,
+          "fetched": 1,
+          "cpu": 0,
+          "resident_rate": 0.996078431372549
+        },
+        {
+          "layer": 1,
+          "expert": 25,
+          "routes": 2,
+          "misses": 2,
+          "fetched": 1,
+          "cpu": 1,
+          "resident_rate": 0.403921568627451
+        },
+        {
+          "layer": 1,
+          "expert": 33,
+          "routes": 22,
+          "misses": 2,
+          "fetched": 1,
+          "cpu": 1,
+          "resident_rate": 0.9921568627450981
+        }
+      ],
+      "top_routed": [
+        {
+          "layer": 35,
+          "expert": 167,
+          "routes": 183,
+          "misses": 0,
+          "fetched": 0,
+          "cpu": 0,
+          "resident_rate": 1.0
+        },
+        {
+          "layer": 27,
+          "expert": 206,
+          "routes": 177,
+          "misses": 0,
+          "fetched": 0,
+          "cpu": 0,
+          "resident_rate": 1.0
+        },
+        {
+          "layer": 8,
+          "expert": 224,
+          "routes": 176,
+          "misses": 3,
+          "fetched": 1,
+          "cpu": 2,
+          "resident_rate": 0.9882352941176471
+        },
+        {
+          "layer": 21,
+          "expert": 243,
+          "routes": 176,
+          "misses": 0,
+          "fetched": 0,
+          "cpu": 0,
+          "resident_rate": 1.0
+        },
+        {
+          "layer": 37,
+          "expert": 64,
+          "routes": 175,
+          "misses": 0,
+          "fetched": 0,
+          "cpu": 0,
+          "resident_rate": 1.0
+        },
+        {
+          "layer": 33,
+          "expert": 81,
+          "routes": 172,
+          "misses": 1,
+          "fetched": 1,
+          "cpu": 0,
+          "resident_rate": 0.9882352941176471
+        },
+        {
+          "layer": 15,
+          "expert": 206,
+          "routes": 171,
+          "misses": 0,
+          "fetched": 0,
+          "cpu": 0,
+          "resident_rate": 1.0
+        },
+        {
+          "layer": 20,
+          "expert": 151,
+          "routes": 166,
+          "misses": 0,
+          "fetched": 0,
+          "cpu": 0,
+          "resident_rate": 1.0
+        },
+        {
+          "layer": 36,
+          "expert": 158,
+          "routes": 165,
+          "misses": 0,
+          "fetched": 0,
+          "cpu": 0,
+          "resident_rate": 1.0
+        },
+        {
+          "layer": 20,
+          "expert": 41,
+          "routes": 157,
+          "misses": 0,
+          "fetched": 0,
+          "cpu": 0,
+          "resident_rate": 1.0
+        },
+        {
+          "layer": 20,
+          "expert": 53,
+          "routes": 157,
+          "misses": 0,
+          "fetched": 0,
+          "cpu": 0,
+          "resident_rate": 1.0
+        },
+        {
+          "layer": 14,
+          "expert": 189,
+          "routes": 156,
+          "misses": 4,
+          "fetched": 1,
+          "cpu": 3,
+          "resident_rate": 0.9725490196078431
+        },
+        {
+          "layer": 8,
+          "expert": 151,
+          "routes": 155,
+          "misses": 0,
+          "fetched": 0,
+          "cpu": 0,
+          "resident_rate": 1.0
+        },
+        {
+          "layer": 7,
+          "expert": 132,
+          "routes": 151,
+          "misses": 2,
+          "fetched": 1,
+          "cpu": 1,
+          "resident_rate": 0.9647058823529412
+        },
+        {
+          "layer": 20,
+          "expert": 224,
+          "routes": 151,
+          "misses": 2,
+          "fetched": 1,
+          "cpu": 1,
+          "resident_rate": 0.9882352941176471
+        },
+        {
+          "layer": 21,
+          "expert": 207,
+          "routes": 148,
+          "misses": 0,
+          "fetched": 0,
+          "cpu": 0,
+          "resident_rate": 1.0
+        },
+        {
+          "layer": 9,
+          "expert": 243,
+          "routes": 147,
+          "misses": 0,
+          "fetched": 0,
+          "cpu": 0,
+          "resident_rate": 1.0
+        },
+        {
+          "layer": 8,
+          "expert": 41,
+          "routes": 146,
+          "misses": 0,
+          "fetched": 0,
+          "cpu": 0,
+          "resident_rate": 1.0
+        },
+        {
+          "layer": 37,
+          "expert": 103,
+          "routes": 143,
+          "misses": 0,
+          "fetched": 0,
+          "cpu": 0,
+          "resident_rate": 1.0
+        },
+        {
+          "layer": 9,
+          "expert": 166,
+          "routes": 138,
+          "misses": 0,
+          "fetched": 0,
+          "cpu": 0,
+          "resident_rate": 1.0
+        }
+      ]
+    }
+  }
+}
