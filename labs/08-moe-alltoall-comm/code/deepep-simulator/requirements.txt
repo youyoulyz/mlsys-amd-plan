@@ -1,0 +1,7 @@
+# Core runtime
+torch>=2.1        # any build with sm_70 (V100) kernels
+numpy
+# Config parsing
+PyYAML
+# Optional dev
+# pytest

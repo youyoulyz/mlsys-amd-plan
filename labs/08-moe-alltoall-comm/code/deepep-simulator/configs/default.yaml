@@ -1,0 +1,20 @@
+# Default single experiment on 2x V100.
+num_tokens: 4096        # total across both ranks
+hidden: 4096
+num_experts: 32         # 16 local experts per rank
+topk: 4
+world_size: 2
+dtype: bf16             # fp16 | bf16 | fp8 (fp8 = emulated for comm sizing)
+hidden_out: null        # defaults to hidden
+
+distribution: uniform   # uniform | hotspot | rank_skew
+hotspot_frac: 0.5
+hotspot_gain: 6.0
+rank_skew: 0.0
+
+warmup: 10
+iters: 50
+seed: 0
+backend: nccl           # nccl on GPU, gloo for CPU smoke tests
+device: cuda
+tag: v100_default

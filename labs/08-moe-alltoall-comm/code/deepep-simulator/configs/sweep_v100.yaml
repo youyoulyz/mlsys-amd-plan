@@ -1,0 +1,20 @@
+# Small-panel config for sweeping on 2x V100 (memory-fit conscious).
+# The CLI sweep overrides num_tokens/hidden/topk/distribution.
+num_tokens: 2048
+hidden: 2048
+num_experts: 16
+topk: 4
+world_size: 2
+dtype: bf16
+
+distribution: uniform
+hotspot_frac: 0.5
+hotspot_gain: 6.0
+rank_skew: 0.0
+
+warmup: 5
+iters: 30
+seed: 0
+backend: nccl
+device: cuda
+tag: v100_sweep

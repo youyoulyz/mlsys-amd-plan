@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "deepep-sim"
+version = "0.1.0"
+description = "Minimal MoE EP dispatch/combine simulator for small (2x V100) clusters"
+requires-python = ">=3.9"
+dependencies = ["torch>=2.1", "numpy", "PyYAML"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-dir]
+"" = "src"
